@@ -1,26 +1,72 @@
 @import "tailwindcss";
 
+/*
+ * Design tokens — same restrained, scientific-tool palette used across
+ * this workspace's other quantum tools. Light is the default theme;
+ * dark is an explicit opt-in alternative, not the default.
+ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #f7f8fa;
+  --surface: #ffffff;
+  --surface-secondary: #f1f3f5;
+  --text: #20242b;
+  --text-secondary: #697386;
+  --text-muted: #8a93a3;
+  --border: #e3e7ed;
+  --accent: #315e9e;
+  --accent-hover: #274c80;
+  --accent-contrast: #ffffff;
+  --success: #25845a;
+  --success-bg: #e8f3ee;
+  --warning: #b7791f;
+  --warning-bg: #fbf1df;
+  --error: #c24141;
+  --error-bg: #fbeaea;
+
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+
+  --font-sans-fallback: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono-fallback: ui-monospace, "SF Mono", Consolas, monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root[data-theme="dark"] {
+  --bg: #0e1116;
+  --surface: #161a21;
+  --surface-secondary: #1c212a;
+  --text: #e4e7eb;
+  --text-secondary: #9aa4b2;
+  --text-muted: #6b7584;
+  --border: #2a2f3a;
+  --accent: #5b8fd6;
+  --accent-hover: #7aa5e0;
+  --accent-contrast: #0e1116;
+  --success: #3fae82;
+  --success-bg: #12261e;
+  --warning: #d6a44d;
+  --warning-bg: #2a2110;
+  --error: #de6b6b;
+  --error-bg: #2b1414;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-feature-settings: "tnum" 1;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans, var(--font-sans-fallback));
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.font-mono-tech {
+  font-family: var(--font-mono, var(--font-mono-fallback));
+  font-variant-numeric: tabular-nums;
 }
